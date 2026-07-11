@@ -1,0 +1,55 @@
+{
+	"name": "DS_METADATA_SINK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_METADATA_SINK",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TargetFolder": {
+				"type": "string"
+			},
+			"TargetFileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().TargetFileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().TargetFolder",
+					"type": "Expression"
+				},
+				"fileSystem": "output"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			},
+			{
+				"name": "Status",
+				"type": "String"
+			},
+			{
+				"name": "Error",
+				"type": "String"
+			}
+		]
+	}
+}
