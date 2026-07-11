@@ -5,11 +5,20 @@
 			"referenceName": "LS_METDATA",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Sourcefile": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().Sourcefile",
+					"type": "Expression"
+				},
 				"fileSystem": "input"
 			},
 			"columnDelimiter": ",",
