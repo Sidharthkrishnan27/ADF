@@ -23,6 +23,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_DEL_ADLS'"
 		},
+		"LS_FLTR_SRC_CSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_FLTR_SRC_CSV'"
+		},
+		"LS_FLTR_TGT_SNK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_FLTR_TGT_SNK'"
+		},
 		"LS_Log_Delete_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_Log_Delete'"
@@ -59,6 +67,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQL_INSRT'"
 		},
+		"LS_TGT_SRC_FLTR_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_TGT_SRC_FLTR'"
+		},
 		"LS_ADLS_CSV_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
@@ -76,6 +88,14 @@
 			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
 		},
 		"LS_DEL_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_FLTR_SRC_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_FLTR_TGT_SNK_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
 		},
@@ -127,6 +147,10 @@
 			"type": "string",
 			"defaultValue": "visionboard"
 		},
+		"LS_TGT_SRC_FLTR_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -166,6 +190,12 @@
 					"LS_DEL_ADLS_accountKey": {
 						"value": "[parameters('LS_DEL_ADLS_accountKey')]"
 					},
+					"LS_FLTR_SRC_CSV_accountKey": {
+						"value": "[parameters('LS_FLTR_SRC_CSV_accountKey')]"
+					},
+					"LS_FLTR_TGT_SNK_accountKey": {
+						"value": "[parameters('LS_FLTR_TGT_SNK_accountKey')]"
+					},
 					"LS_Log_Delete_connectionString": {
 						"value": "[parameters('LS_Log_Delete_connectionString')]"
 					},
@@ -184,6 +214,9 @@
 					"LS_SINK_METADATA_SRC_accountKey": {
 						"value": "[parameters('LS_SINK_METADATA_SRC_accountKey')]"
 					},
+					"LS_TGT_SRC_FLTR_accountKey": {
+						"value": "[parameters('LS_TGT_SRC_FLTR_accountKey')]"
+					},
 					"LS_ADLS_CSV_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLS_CSV_properties_typeProperties_url')]"
 					},
@@ -199,6 +232,12 @@
 					"LS_DEL_ADLS_properties_typeProperties_url": {
 						"value": "[parameters('LS_DEL_ADLS_properties_typeProperties_url')]"
 					},
+					"LS_FLTR_SRC_CSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_FLTR_SRC_CSV_properties_typeProperties_url')]"
+					},
+					"LS_FLTR_TGT_SNK_properties_typeProperties_url": {
+						"value": "[parameters('LS_FLTR_TGT_SNK_properties_typeProperties_url')]"
+					},
 					"LS_METADATA_SINK_properties_typeProperties_url": {
 						"value": "[parameters('LS_METADATA_SINK_properties_typeProperties_url')]"
 					},
@@ -213,6 +252,9 @@
 					},
 					"LS_SINK_METADATA_SRC_properties_typeProperties_url": {
 						"value": "[parameters('LS_SINK_METADATA_SRC_properties_typeProperties_url')]"
+					},
+					"LS_TGT_SRC_FLTR_properties_typeProperties_url": {
+						"value": "[parameters('LS_TGT_SRC_FLTR_properties_typeProperties_url')]"
 					}
 				}
 			},

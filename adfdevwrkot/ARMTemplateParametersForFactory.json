@@ -17,6 +17,12 @@
 		"LS_DEL_ADLS_accountKey": {
 			"value": ""
 		},
+		"LS_FLTR_SRC_CSV_accountKey": {
+			"value": ""
+		},
+		"LS_FLTR_TGT_SNK_accountKey": {
+			"value": ""
+		},
 		"LS_Log_Delete_connectionString": {
 			"value": ""
 		},
@@ -44,6 +50,9 @@
 		"LS_SQL_INSRT_password": {
 			"value": ""
 		},
+		"LS_TGT_SRC_FLTR_accountKey": {
+			"value": ""
+		},
 		"LS_ADLS_CSV_properties_typeProperties_url": {
 			"value": "https://adlsdevstrg.dfs.core.windows.net/"
 		},
@@ -57,6 +66,12 @@
 			"value": "https://adlsdevstrg.dfs.core.windows.net/"
 		},
 		"LS_DEL_ADLS_properties_typeProperties_url": {
+			"value": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_FLTR_SRC_CSV_properties_typeProperties_url": {
+			"value": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_FLTR_TGT_SNK_properties_typeProperties_url": {
 			"value": "https://adlsdevstrg.dfs.core.windows.net/"
 		},
 		"LS_METADATA_SINK_properties_typeProperties_url": {
@@ -94,6 +109,9 @@
 		},
 		"LS_SQL_INSRT_properties_typeProperties_userName": {
 			"value": "visionboard"
+		},
+		"LS_TGT_SRC_FLTR_properties_typeProperties_url": {
+			"value": "https://adlsdevstrg.dfs.core.windows.net/"
 		}
 	}
 }
