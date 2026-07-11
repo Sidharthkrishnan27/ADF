@@ -1,0 +1,21 @@
+{
+	"name": "LS_SQL_INSRT",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "LAPTOP-5TJ29G80\\SQLEXPRESS",
+			"database": "visionboardprj",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "visionboard",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4N2Q3ODA2Ny03NWQ4LTQxMDEtYjg5NC01NDQ5YTI1M2Y5M2YiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
