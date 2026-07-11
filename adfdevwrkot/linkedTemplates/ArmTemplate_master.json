@@ -1,0 +1,272 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfdevwrkot"
+		},
+		"LS_ADLS_CSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_CSV'"
+		},
+		"LS_ADLS_PQT_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PQT'"
+		},
+		"LS_CSV_PQT_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_PQT'"
+		},
+		"LS_DEL_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_DEL_ADLS'"
+		},
+		"LS_Log_Delete_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_Log_Delete'"
+		},
+		"LS_METADATA_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_METADATA_SINK'"
+		},
+		"LS_METADATA_TXT_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_METADATA_TXT_SINK'"
+		},
+		"LS_METDATA_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_METDATA'"
+		},
+		"LS_Metadata_binary_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_Metadata_binary'"
+		},
+		"LS_SINK_METADATA_SRC_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SINK_METADATA_SRC'"
+		},
+		"LS_SQL_ADLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_ADLS'"
+		},
+		"LS_SQL_CSV_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SQL_CSV_ADLS'"
+		},
+		"LS_SQL_INSRT_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_INSRT'"
+		},
+		"LS_ADLS_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_ADLS_PQT_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_API_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"LS_CSV_PQT_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_DEL_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_METADATA_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_METADATA_TXT_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_METDATA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_Metadata_binary_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_SINK_METADATA_SRC_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "visionboardprj"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "visionboard"
+		},
+		"LS_SQL_CSV_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_SQL_INSRT_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_SQL_INSRT_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "visionboardprj"
+		},
+		"LS_SQL_INSRT_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "visionboard"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfdevwrkot_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_ADLS_CSV_accountKey": {
+						"value": "[parameters('LS_ADLS_CSV_accountKey')]"
+					},
+					"LS_ADLS_PQT_accountKey": {
+						"value": "[parameters('LS_ADLS_PQT_accountKey')]"
+					},
+					"LS_CSV_PQT_accountKey": {
+						"value": "[parameters('LS_CSV_PQT_accountKey')]"
+					},
+					"LS_DEL_ADLS_accountKey": {
+						"value": "[parameters('LS_DEL_ADLS_accountKey')]"
+					},
+					"LS_Log_Delete_connectionString": {
+						"value": "[parameters('LS_Log_Delete_connectionString')]"
+					},
+					"LS_METADATA_SINK_accountKey": {
+						"value": "[parameters('LS_METADATA_SINK_accountKey')]"
+					},
+					"LS_METADATA_TXT_SINK_accountKey": {
+						"value": "[parameters('LS_METADATA_TXT_SINK_accountKey')]"
+					},
+					"LS_METDATA_accountKey": {
+						"value": "[parameters('LS_METDATA_accountKey')]"
+					},
+					"LS_Metadata_binary_accountKey": {
+						"value": "[parameters('LS_Metadata_binary_accountKey')]"
+					},
+					"LS_SINK_METADATA_SRC_accountKey": {
+						"value": "[parameters('LS_SINK_METADATA_SRC_accountKey')]"
+					},
+					"LS_ADLS_CSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_CSV_properties_typeProperties_url')]"
+					},
+					"LS_ADLS_PQT_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_PQT_properties_typeProperties_url')]"
+					},
+					"LS_API_CSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_API_CSV_properties_typeProperties_url')]"
+					},
+					"LS_CSV_PQT_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_PQT_properties_typeProperties_url')]"
+					},
+					"LS_DEL_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_DEL_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_METADATA_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_METADATA_SINK_properties_typeProperties_url')]"
+					},
+					"LS_METADATA_TXT_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_METADATA_TXT_SINK_properties_typeProperties_url')]"
+					},
+					"LS_METDATA_properties_typeProperties_url": {
+						"value": "[parameters('LS_METDATA_properties_typeProperties_url')]"
+					},
+					"LS_Metadata_binary_properties_typeProperties_url": {
+						"value": "[parameters('LS_Metadata_binary_properties_typeProperties_url')]"
+					},
+					"LS_SINK_METADATA_SRC_properties_typeProperties_url": {
+						"value": "[parameters('LS_SINK_METADATA_SRC_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfdevwrkot_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_SQL_ADLS_password": {
+						"value": "[parameters('LS_SQL_ADLS_password')]"
+					},
+					"LS_SQL_CSV_ADLS_accountKey": {
+						"value": "[parameters('LS_SQL_CSV_ADLS_accountKey')]"
+					},
+					"LS_SQL_INSRT_password": {
+						"value": "[parameters('LS_SQL_INSRT_password')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_server')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_database')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_CSV_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_SQL_CSV_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_SQL_INSRT_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_INSRT_properties_typeProperties_server')]"
+					},
+					"LS_SQL_INSRT_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_INSRT_properties_typeProperties_database')]"
+					},
+					"LS_SQL_INSRT_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_INSRT_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdevwrkot_ArmTemplate_0')]"
+			]
+		}
+	]
+}
