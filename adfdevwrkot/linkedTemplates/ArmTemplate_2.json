@@ -13,244 +13,6 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/PL_Activity_METDTA')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Get Metadata1",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "DelimitedText2",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"fieldList": [
-								"childItems"
-							],
-							"storeSettings": {
-								"type": "AzureBlobFSReadSettings",
-								"recursive": true,
-								"enablePartitionDiscovery": false
-							},
-							"formatSettings": {
-								"type": "DelimitedTextReadSettings"
-							}
-						}
-					},
-					{
-						"name": "ForEach1",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Get Metadata1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Get Metadata1').output.childItems",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "Switch1",
-									"type": "Switch",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"on": {
-											"value": "@last(split(item().name,'.'))",
-											"type": "Expression"
-										},
-										"cases": [
-											{
-												"value": "csv",
-												"activities": [
-													{
-														"name": "CPY_CSV",
-														"type": "Copy",
-														"dependsOn": [],
-														"policy": {
-															"timeout": "0.12:00:00",
-															"retry": 0,
-															"retryIntervalInSeconds": 30,
-															"secureOutput": false,
-															"secureInput": false
-														},
-														"userProperties": [],
-														"typeProperties": {
-															"source": {
-																"type": "DelimitedTextSource",
-																"storeSettings": {
-																	"type": "AzureBlobFSReadSettings",
-																	"recursive": true,
-																	"enablePartitionDiscovery": false
-																},
-																"formatSettings": {
-																	"type": "DelimitedTextReadSettings"
-																}
-															},
-															"sink": {
-																"type": "DelimitedTextSink",
-																"storeSettings": {
-																	"type": "AzureBlobFSWriteSettings"
-																},
-																"formatSettings": {
-																	"type": "DelimitedTextWriteSettings",
-																	"quoteAllText": true,
-																	"fileExtension": ".txt"
-																}
-															},
-															"enableStaging": false,
-															"translator": {
-																"type": "TabularTranslator",
-																"typeConversion": true,
-																"typeConversionSettings": {
-																	"allowDataTruncation": true,
-																	"treatBooleanAsNumber": false
-																}
-															}
-														},
-														"inputs": [
-															{
-																"referenceName": "DelimitedText3",
-																"type": "DatasetReference",
-																"parameters": {
-																	"sourcefile": {
-																		"value": "@item().name",
-																		"type": "Expression"
-																	}
-																}
-															}
-														],
-														"outputs": [
-															{
-																"referenceName": "DS_METADATA_SINK",
-																"type": "DatasetReference",
-																"parameters": {
-																	"TargetFolder": {
-																		"value": "@'CSV_Files'",
-																		"type": "Expression"
-																	},
-																	"TargetFileName": {
-																		"value": "@item().name",
-																		"type": "Expression"
-																	}
-																}
-															}
-														]
-													}
-												]
-											},
-											{
-												"value": "txt",
-												"activities": [
-													{
-														"name": "CPY_TXT",
-														"type": "Copy",
-														"dependsOn": [],
-														"policy": {
-															"timeout": "0.12:00:00",
-															"retry": 0,
-															"retryIntervalInSeconds": 30,
-															"secureOutput": false,
-															"secureInput": false
-														},
-														"userProperties": [],
-														"typeProperties": {
-															"source": {
-																"type": "DelimitedTextSource",
-																"storeSettings": {
-																	"type": "AzureBlobFSReadSettings",
-																	"recursive": true,
-																	"enablePartitionDiscovery": false
-																},
-																"formatSettings": {
-																	"type": "DelimitedTextReadSettings"
-																}
-															},
-															"sink": {
-																"type": "DelimitedTextSink",
-																"storeSettings": {
-																	"type": "AzureBlobFSWriteSettings"
-																},
-																"formatSettings": {
-																	"type": "DelimitedTextWriteSettings",
-																	"quoteAllText": true,
-																	"fileExtension": ".txt"
-																}
-															},
-															"enableStaging": false,
-															"translator": {
-																"type": "TabularTranslator",
-																"typeConversion": true,
-																"typeConversionSettings": {
-																	"allowDataTruncation": true,
-																	"treatBooleanAsNumber": false
-																}
-															}
-														},
-														"inputs": [
-															{
-																"referenceName": "DS_SINK_METADATA",
-																"type": "DatasetReference",
-																"parameters": {
-																	"sourcefile": {
-																		"value": "@item().name",
-																		"type": "Expression"
-																	}
-																}
-															}
-														],
-														"outputs": [
-															{
-																"referenceName": "DS_METADATA_TXT_SINK",
-																"type": "DatasetReference",
-																"parameters": {
-																	"Targetfolder": {
-																		"value": "@'TXT_Files'",
-																		"type": "Expression"
-																	},
-																	"Targetfilename": {
-																		"value": "@item().name",
-																		"type": "Expression"
-																	}
-																}
-															}
-														]
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/PL_CSV_PQT')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -553,6 +315,41 @@
 				},
 				"annotations": [],
 				"lastPublishTime": "2026-07-09T03:43:31Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_CPY_PRQT_INCRMNTL')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_CPY_PRQT_INCRMNTL",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"tablename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@concat(dataset().tablename,'_',formatDateTime(utcNow(),'yyyyMMddHHmmss'),'.parquet')",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@concat(dataset().tablename,'/',formatDateTime(utcNow(),'yyyy/MM/dd'))\n",
+							"type": "Expression"
+						},
+						"fileSystem": "vbprojectdev"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
 			},
 			"dependsOn": []
 		},
@@ -964,7 +761,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_LKP_MAX_VALUE')]",
-				"[concat(variables('factoryId'), '/datasets/DS_CPY_SQL_INCRMNTL')]"
+				"[concat(variables('factoryId'), '/datasets/DS_CPY_SQL_INCRMNTL')]",
+				"[concat(variables('factoryId'), '/datasets/DS_CPY_PRQT_INCRMNTL')]"
 			]
 		},
 		{

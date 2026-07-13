@@ -256,9 +256,6 @@
 					"LS_ADLS_PQT_accountKey": {
 						"value": "[parameters('LS_ADLS_PQT_accountKey')]"
 					},
-					"LS_CPY_PRQT_INCRMNTL_accountKey": {
-						"value": "[parameters('LS_CPY_PRQT_INCRMNTL_accountKey')]"
-					},
 					"LS_CSV_PQT_accountKey": {
 						"value": "[parameters('LS_CSV_PQT_accountKey')]"
 					},
@@ -300,9 +297,6 @@
 					},
 					"LS_API_CSV_properties_typeProperties_url": {
 						"value": "[parameters('LS_API_CSV_properties_typeProperties_url')]"
-					},
-					"LS_CPY_PRQT_INCRMNTL_properties_typeProperties_url": {
-						"value": "[parameters('LS_CPY_PRQT_INCRMNTL_properties_typeProperties_url')]"
 					},
 					"LS_CSV_PQT_properties_typeProperties_url": {
 						"value": "[parameters('LS_CSV_PQT_properties_typeProperties_url')]"
@@ -352,6 +346,9 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"LS_CPY_PRQT_INCRMNTL_accountKey": {
+						"value": "[parameters('LS_CPY_PRQT_INCRMNTL_accountKey')]"
+					},
 					"LS_CPY_SQL_INCRMNTL_password": {
 						"value": "[parameters('LS_CPY_SQL_INCRMNTL_password')]"
 					},
@@ -372,6 +369,9 @@
 					},
 					"LS_STRPRCDR_WTRMRK_password": {
 						"value": "[parameters('LS_STRPRCDR_WTRMRK_password')]"
+					},
+					"LS_CPY_PRQT_INCRMNTL_properties_typeProperties_url": {
+						"value": "[parameters('LS_CPY_PRQT_INCRMNTL_properties_typeProperties_url')]"
 					},
 					"LS_CPY_SQL_INCRMNTL_properties_typeProperties_server": {
 						"value": "[parameters('LS_CPY_SQL_INCRMNTL_properties_typeProperties_server')]"

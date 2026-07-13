@@ -2285,9 +2285,15 @@
 						"type": "SecureString",
 						"value": "[parameters('LS_CPY_PRQT_INCRMNTL_accountKey')]"
 					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_CPY_SQL_INCRMNTL')]",
