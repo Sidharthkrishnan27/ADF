@@ -7,11 +7,11 @@
 		"typeProperties": {
 			"server": "LAPTOP-5TJ29G80\\SQLEXPRESS",
 			"database": "vbprojectdev",
-			"encrypt": "mandatory",
+			"encrypt": "optional",
 			"trustServerCertificate": false,
 			"authenticationType": "SQL",
 			"userName": "visionboard",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzYjU0MTM5YS01NjM5LTRiNjgtOWY2Mi0zMWEzNDlmZmY3MzUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjOGI0Y2JhNC0xZWVmLTRkYjctODliNS03ODEzMjlmMmUyNmIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime1",
