@@ -1,0 +1,21 @@
+{
+	"name": "LS_LKP_MAX_VALUE",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "LAPTOP-5TJ29G80\\SQLEXPRESS",
+			"database": "vbprojectdev",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "visionboard",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJlMzdmMzg5ZS1hMDU2LTQ4YWEtODlmNC1lNjdmNmU3NDEwNTciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
