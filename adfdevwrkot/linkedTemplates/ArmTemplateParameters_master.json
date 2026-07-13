@@ -11,6 +11,12 @@
 		"LS_ADLS_PQT_accountKey": {
 			"value": ""
 		},
+		"LS_CPY_PRQT_INCRMNTL_accountKey": {
+			"value": ""
+		},
+		"LS_CPY_SQL_INCRMNTL_password": {
+			"value": ""
+		},
 		"LS_CSV_PQT_accountKey": {
 			"value": ""
 		},
@@ -21,6 +27,9 @@
 			"value": ""
 		},
 		"LS_FLTR_TGT_SNK_accountKey": {
+			"value": ""
+		},
+		"LS_LKP_MAX_VALUE_password": {
 			"value": ""
 		},
 		"LS_Log_Delete_connectionString": {
@@ -50,6 +59,12 @@
 		"LS_SQL_INSRT_password": {
 			"value": ""
 		},
+		"LS_SQL_WTRMRK_password": {
+			"value": ""
+		},
+		"LS_STRPRCDR_WTRMRK_password": {
+			"value": ""
+		},
 		"LS_TGT_SRC_FLTR_accountKey": {
 			"value": ""
 		},
@@ -62,6 +77,18 @@
 		"LS_API_CSV_properties_typeProperties_url": {
 			"value": "https://retoolapi.dev/5yDVOt/data"
 		},
+		"LS_CPY_PRQT_INCRMNTL_properties_typeProperties_url": {
+			"value": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_CPY_SQL_INCRMNTL_properties_typeProperties_server": {
+			"value": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_CPY_SQL_INCRMNTL_properties_typeProperties_database": {
+			"value": "vbprojectdev"
+		},
+		"LS_CPY_SQL_INCRMNTL_properties_typeProperties_userName": {
+			"value": "visionboard"
+		},
 		"LS_CSV_PQT_properties_typeProperties_url": {
 			"value": "https://adlsdevstrg.dfs.core.windows.net/"
 		},
@@ -73,6 +100,15 @@
 		},
 		"LS_FLTR_TGT_SNK_properties_typeProperties_url": {
 			"value": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_LKP_MAX_VALUE_properties_typeProperties_server": {
+			"value": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_LKP_MAX_VALUE_properties_typeProperties_database": {
+			"value": "vbprojectdev"
+		},
+		"LS_LKP_MAX_VALUE_properties_typeProperties_userName": {
+			"value": "visionboard"
 		},
 		"LS_METADATA_SINK_properties_typeProperties_url": {
 			"value": "https://adlsdevstrg.dfs.core.windows.net/"
@@ -108,6 +144,24 @@
 			"value": "visionboardprj"
 		},
 		"LS_SQL_INSRT_properties_typeProperties_userName": {
+			"value": "visionboard"
+		},
+		"LS_SQL_WTRMRK_properties_typeProperties_server": {
+			"value": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_SQL_WTRMRK_properties_typeProperties_database": {
+			"value": "vbprojectdev"
+		},
+		"LS_SQL_WTRMRK_properties_typeProperties_userName": {
+			"value": "visionboard"
+		},
+		"LS_STRPRCDR_WTRMRK_properties_typeProperties_server": {
+			"value": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_STRPRCDR_WTRMRK_properties_typeProperties_database": {
+			"value": "vbprojectdev"
+		},
+		"LS_STRPRCDR_WTRMRK_properties_typeProperties_userName": {
 			"value": "visionboard"
 		},
 		"LS_TGT_SRC_FLTR_properties_typeProperties_url": {

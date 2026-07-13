@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PQT'"
 		},
+		"LS_CPY_PRQT_INCRMNTL_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CPY_PRQT_INCRMNTL'"
+		},
+		"LS_CPY_SQL_INCRMNTL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_CPY_SQL_INCRMNTL'"
+		},
 		"LS_CSV_PQT_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_CSV_PQT'"
@@ -30,6 +38,10 @@
 		"LS_FLTR_TGT_SNK_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_FLTR_TGT_SNK'"
+		},
+		"LS_LKP_MAX_VALUE_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_LKP_MAX_VALUE'"
 		},
 		"LS_Log_Delete_connectionString": {
 			"type": "secureString",
@@ -67,6 +79,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQL_INSRT'"
 		},
+		"LS_SQL_WTRMRK_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_WTRMRK'"
+		},
+		"LS_STRPRCDR_WTRMRK_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_STRPRCDR_WTRMRK'"
+		},
 		"LS_TGT_SRC_FLTR_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_TGT_SRC_FLTR'"
@@ -83,6 +103,22 @@
 			"type": "string",
 			"defaultValue": "https://retoolapi.dev/5yDVOt/data"
 		},
+		"LS_CPY_PRQT_INCRMNTL_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_CPY_SQL_INCRMNTL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_CPY_SQL_INCRMNTL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "vbprojectdev"
+		},
+		"LS_CPY_SQL_INCRMNTL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "visionboard"
+		},
 		"LS_CSV_PQT_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
@@ -98,6 +134,18 @@
 		"LS_FLTR_TGT_SNK_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
+		},
+		"LS_LKP_MAX_VALUE_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_LKP_MAX_VALUE_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "vbprojectdev"
+		},
+		"LS_LKP_MAX_VALUE_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "visionboard"
 		},
 		"LS_METADATA_SINK_properties_typeProperties_url": {
 			"type": "string",
@@ -147,6 +195,30 @@
 			"type": "string",
 			"defaultValue": "visionboard"
 		},
+		"LS_SQL_WTRMRK_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_SQL_WTRMRK_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "vbprojectdev"
+		},
+		"LS_SQL_WTRMRK_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "visionboard"
+		},
+		"LS_STRPRCDR_WTRMRK_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-5TJ29G80\\SQLEXPRESS"
+		},
+		"LS_STRPRCDR_WTRMRK_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "vbprojectdev"
+		},
+		"LS_STRPRCDR_WTRMRK_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "visionboard"
+		},
 		"LS_TGT_SRC_FLTR_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevstrg.dfs.core.windows.net/"
@@ -183,6 +255,9 @@
 					},
 					"LS_ADLS_PQT_accountKey": {
 						"value": "[parameters('LS_ADLS_PQT_accountKey')]"
+					},
+					"LS_CPY_PRQT_INCRMNTL_accountKey": {
+						"value": "[parameters('LS_CPY_PRQT_INCRMNTL_accountKey')]"
 					},
 					"LS_CSV_PQT_accountKey": {
 						"value": "[parameters('LS_CSV_PQT_accountKey')]"
@@ -225,6 +300,9 @@
 					},
 					"LS_API_CSV_properties_typeProperties_url": {
 						"value": "[parameters('LS_API_CSV_properties_typeProperties_url')]"
+					},
+					"LS_CPY_PRQT_INCRMNTL_properties_typeProperties_url": {
+						"value": "[parameters('LS_CPY_PRQT_INCRMNTL_properties_typeProperties_url')]"
 					},
 					"LS_CSV_PQT_properties_typeProperties_url": {
 						"value": "[parameters('LS_CSV_PQT_properties_typeProperties_url')]"
@@ -274,6 +352,12 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"LS_CPY_SQL_INCRMNTL_password": {
+						"value": "[parameters('LS_CPY_SQL_INCRMNTL_password')]"
+					},
+					"LS_LKP_MAX_VALUE_password": {
+						"value": "[parameters('LS_LKP_MAX_VALUE_password')]"
+					},
 					"LS_SQL_ADLS_password": {
 						"value": "[parameters('LS_SQL_ADLS_password')]"
 					},
@@ -282,6 +366,30 @@
 					},
 					"LS_SQL_INSRT_password": {
 						"value": "[parameters('LS_SQL_INSRT_password')]"
+					},
+					"LS_SQL_WTRMRK_password": {
+						"value": "[parameters('LS_SQL_WTRMRK_password')]"
+					},
+					"LS_STRPRCDR_WTRMRK_password": {
+						"value": "[parameters('LS_STRPRCDR_WTRMRK_password')]"
+					},
+					"LS_CPY_SQL_INCRMNTL_properties_typeProperties_server": {
+						"value": "[parameters('LS_CPY_SQL_INCRMNTL_properties_typeProperties_server')]"
+					},
+					"LS_CPY_SQL_INCRMNTL_properties_typeProperties_database": {
+						"value": "[parameters('LS_CPY_SQL_INCRMNTL_properties_typeProperties_database')]"
+					},
+					"LS_CPY_SQL_INCRMNTL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_CPY_SQL_INCRMNTL_properties_typeProperties_userName')]"
+					},
+					"LS_LKP_MAX_VALUE_properties_typeProperties_server": {
+						"value": "[parameters('LS_LKP_MAX_VALUE_properties_typeProperties_server')]"
+					},
+					"LS_LKP_MAX_VALUE_properties_typeProperties_database": {
+						"value": "[parameters('LS_LKP_MAX_VALUE_properties_typeProperties_database')]"
+					},
+					"LS_LKP_MAX_VALUE_properties_typeProperties_userName": {
+						"value": "[parameters('LS_LKP_MAX_VALUE_properties_typeProperties_userName')]"
 					},
 					"LS_SQL_ADLS_properties_typeProperties_server": {
 						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_server')]"
@@ -303,11 +411,49 @@
 					},
 					"LS_SQL_INSRT_properties_typeProperties_userName": {
 						"value": "[parameters('LS_SQL_INSRT_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_WTRMRK_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_WTRMRK_properties_typeProperties_server')]"
+					},
+					"LS_SQL_WTRMRK_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_WTRMRK_properties_typeProperties_database')]"
+					},
+					"LS_SQL_WTRMRK_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_WTRMRK_properties_typeProperties_userName')]"
+					},
+					"LS_STRPRCDR_WTRMRK_properties_typeProperties_server": {
+						"value": "[parameters('LS_STRPRCDR_WTRMRK_properties_typeProperties_server')]"
+					},
+					"LS_STRPRCDR_WTRMRK_properties_typeProperties_database": {
+						"value": "[parameters('LS_STRPRCDR_WTRMRK_properties_typeProperties_database')]"
+					},
+					"LS_STRPRCDR_WTRMRK_properties_typeProperties_userName": {
+						"value": "[parameters('LS_STRPRCDR_WTRMRK_properties_typeProperties_userName')]"
 					}
 				}
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'adfdevwrkot_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adfdevwrkot_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdevwrkot_ArmTemplate_1')]"
 			]
 		}
 	]
