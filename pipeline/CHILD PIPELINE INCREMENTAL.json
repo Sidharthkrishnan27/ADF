@@ -1,0 +1,182 @@
+{
+	"name": "CHILD PIPELINE INCREMENTAL",
+	"properties": {
+		"activities": [
+			{
+				"name": "LKP_MAX_VALUE",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT MAX(@{pipeline().parameters.WatermarkColumn}) AS MaxValue\r\nFROM @{pipeline().parameters.TableSchema}.@{pipeline().parameters.TableName}",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_LKP_MAX_VALUE",
+						"type": "DatasetReference",
+						"parameters": {
+							"schemaname": {
+								"value": "@pipeline().parameters.TableSchema",
+								"type": "Expression"
+							},
+							"tablename": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							}
+						}
+					}
+				}
+			},
+			{
+				"name": "IF_NEW_RECORD_EXIST",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "LKP_MAX_VALUE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@or(equals(pipeline().parameters.LastLoadValue, null), greater(int(activity('LKP_MAX_VALUE').output.firstRow.MaxValue), int(pipeline().parameters.LastLoadValue)))\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "CPY_FULL_CTLOAD",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": "@concat(\r\n    'SELECT * FROM ',\r\n    pipeline().parameters.TableSchema, '.', pipeline().parameters.TableName,\r\n    if(\r\n        equals(pipeline().parameters.LastLoadValue, null),\r\n        '', \r\n        concat(\r\n            ' WHERE ', pipeline().parameters.WatermarkColumn,\r\n            ' > ''', pipeline().parameters.LastLoadValue, ''''\r\n        )\r\n    )\r\n)",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_CPY_SQL_INCRMNTL",
+									"type": "DatasetReference",
+									"parameters": {
+										"schemaname": {
+											"value": "@pipeline().parameters.TableSchema",
+											"type": "Expression"
+										},
+										"tablename": {
+											"value": "@pipeline().parameters.TableName",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_CPY_PRQT_INCRMNTL",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": {
+											"value": "@pipeline().parameters.TableName",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "EXEC_UPDT_STORE_PRCDR",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "CPY_FULL_CTLOAD",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "CHILD PIPELINE STORE PROCEDURE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"TableName": {
+										"value": "@pipeline().parameters.TableName",
+										"type": "Expression"
+									},
+									"SchemaName": {
+										"value": "@pipeline().parameters.TableSchema",
+										"type": "Expression"
+									},
+									"WatermarkColumn": {
+										"value": "@pipeline().parameters.WatermarkColumn",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"TableSchema": {
+				"type": "string"
+			},
+			"TableName": {
+				"type": "string"
+			},
+			"WatermarkColumn": {
+				"type": "string"
+			},
+			"LastLoadValue": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
